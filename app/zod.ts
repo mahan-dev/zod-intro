@@ -48,6 +48,13 @@ const validateData = async () => {
   }
 };
 validateData();
-// For async scenario
 
-// const data = await fetchDataSchema.;
+const teamPlayer = z.object({
+  name: z.string(),
+  sourName: z.string(),
+  number: z.number(),
+});
+
+type TeamType = z.infer<typeof teamPlayer>;
+
+teamPlayer.validate({ name: "ali", sourName: "hasehmi", number: 23 }); //true
