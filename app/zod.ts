@@ -79,3 +79,8 @@ const coerceTest = z.coerce.string();
 
 const res = coerceTest.parse(23232);
 console.log("coerce res", res);
+
+// email validation
+
+const validateEmail = z.email().parse("example@gmail.com");
+console.log("🎃 ~ zod.ts:85 ~ validateEmail:", validateEmail);
