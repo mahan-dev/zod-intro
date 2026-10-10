@@ -72,3 +72,10 @@ const buyItem: StoreTypes = {
   drinks: ["vodka", "whisky"],
   food: ["fast-food", "italian-food"],
 };
+
+//* Coercion zod
+
+const coerceTest = z.coerce.string();
+
+const res = coerceTest.parse(23232);
+console.log("coerce res", res);
