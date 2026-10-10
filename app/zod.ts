@@ -58,3 +58,17 @@ const teamPlayer = z.object({
 type TeamType = z.infer<typeof teamPlayer>;
 
 teamPlayer.validate({ name: "ali", sourName: "hasehmi", number: 23 }); //true
+
+const store = z.object({
+  milk: z.string(),
+  drinks: z.array(z.string()),
+  food: z.array(z.string()),
+});
+
+type StoreTypes = z.infer<typeof store>;
+
+const buyItem: StoreTypes = {
+  milk: "coconut-mil",
+  drinks: ["vodka", "whisky"],
+  food: ["fast-food", "italian-food"],
+};
