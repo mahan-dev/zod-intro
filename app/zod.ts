@@ -88,7 +88,7 @@ console.log("🎃 ~ zod.ts:85 ~ validateEmail:", validateEmail);
 //! user object
 
 const userObj = z.object({
-  name: z.string().trim().min(3),
+  name: z.string().trim().min(3).transform(val => val.toLowerCase()),
   lastName: z.string().trim().min(3),
   age: z.coerce.number().min(18).max(100),
 });
@@ -96,7 +96,7 @@ const userObj = z.object({
 type UserType = z.infer<typeof userObj>;
 
 const userResult = userObj.safeParse({
-  name: "ashley",
+  name: "ASHLEY",
   lastName: "rose",
   age: "18",
 });
