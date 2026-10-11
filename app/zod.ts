@@ -118,3 +118,14 @@ if (validateCard.error) {
   console.log("error", validateCard.error);
 }
 console.log("🚡 ~ zod.ts:120 ~ validateCard:", validateCard);
+
+const fishEnum = z.enum(["salmon", "tuna", "trout"]);
+
+const salmonAndTuna = fishEnum.exclude(["salmon", "tuna"]);
+
+console.log(salmonAndTuna.safeParse("trout").success);
+
+// export
+const trout = fishEnum.extract(["trout"]);
+
+console.log(trout.safeParse("trout").success)
