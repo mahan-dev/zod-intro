@@ -128,4 +128,8 @@ console.log(salmonAndTuna.safeParse("trout").success);
 // export
 const trout = fishEnum.extract(["trout"]);
 
-console.log(trout.safeParse("trout").success)
+console.log(trout.safeParse("trout").success);
+
+const currencyCode = z.currencyCode();
+
+console.log("🎮 ~ zod.ts:133 ~ currencyCode:", currencyCode.parse("GBP"));
