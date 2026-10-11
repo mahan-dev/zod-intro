@@ -88,7 +88,11 @@ console.log("🎃 ~ zod.ts:85 ~ validateEmail:", validateEmail);
 //! user object
 
 const userObj = z.object({
-  name: z.string().trim().min(3).transform(val => val.toLowerCase()),
+  name: z
+    .string()
+    .trim()
+    .min(3)
+    .transform((val) => val.toLowerCase()),
   lastName: z.string().trim().min(3),
   age: z.coerce.number().min(18).max(100),
 });
@@ -106,3 +110,11 @@ if (userResult.success) {
   console.log("something wen't wrong", userResult.error);
 }
 console.log("🤖 ~ zod.ts:99 ~ userResult:", userResult);
+
+const creditCard = z.string().trim().pipe(z.creditCard());
+
+const validateCard = creditCard.safeParse(" 4111 1111 1111 1111 ");
+if (validateCard.error) {
+  console.log("error", validateCard.error);
+}
+console.log("🚡 ~ zod.ts:120 ~ validateCard:", validateCard);
