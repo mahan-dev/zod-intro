@@ -84,3 +84,25 @@ console.log("coerce res", res);
 
 const validateEmail = z.email().parse("example@gmail.com");
 console.log("🎃 ~ zod.ts:85 ~ validateEmail:", validateEmail);
+
+//! user object
+
+const userObj = z.object({
+  name: z.string().trim().min(3),
+  lastName: z.string().trim().min(3),
+  age: z.coerce.number().min(18).max(100),
+});
+
+type UserType = z.infer<typeof userObj>;
+
+const userResult = userObj.safeParse({
+  name: "ashley",
+  lastName: "rose",
+  age: "18",
+});
+if (userResult.success) {
+  console.log("validated successfully");
+} else if (userResult.error) {
+  console.log("something wen't wrong", userResult.error);
+}
+console.log("🤖 ~ zod.ts:99 ~ userResult:", userResult);
