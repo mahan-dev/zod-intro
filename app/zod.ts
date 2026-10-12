@@ -174,3 +174,11 @@ console.log(
   lists.parse({ name: "ashley", lastName: "rose", tax: 10 }),
   lists.parse({ name: "ashley", lastName: "rose", tax: null }),
 );
+
+const strictItems = z.strictObject({
+  cargo: z.string(),
+});
+console.log(
+  "🍺 ~ zod.ts:178 ~ strictItems:",
+  strictItems.parse({ cargo: "items", something: "sdasd" }),
+);
