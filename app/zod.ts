@@ -125,7 +125,7 @@ const salmonAndTuna = fishEnum.exclude(["salmon", "tuna"]);
 
 console.log(salmonAndTuna.safeParse("trout").success);
 
-// export
+// extract
 const trout = fishEnum.extract(["trout"]);
 
 console.log(trout.safeParse("trout").success);
@@ -141,3 +141,11 @@ const cars = { porsche: 2, bmw: 6, benz: 1 } as const;
 const carsEnum = z.enum(cars);
 
 console.log("🍰 ~ zod.ts:141 ~ carsEnum:", carsEnum.parse(cars.bmw));
+
+// ! z.strbools
+
+const strBools = z.stringbool();
+
+
+console.log("🎺 ~ zod.ts:147 ~ strBools:",strBools.parse("1"));
+console.log("🎺 ~ zod.ts:147 ~ strBools:",strBools.parse("disabled"));
