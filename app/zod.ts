@@ -236,3 +236,8 @@ const unwrapSchema = stringArray.unwrap();
 console.log("🌈 ~ zod.ts:235 ~ stringArray:", stringArray.parse([null]));
 
 console.log("unwrap schema: ", unwrapSchema.parse("test-schema"));
+//!  test None empty
+
+const noneEmpty = z.array(z.string()).nonempty();
+
+console.log("🛩️ ~ zod.ts:241 ~ noneEmpty:", noneEmpty.parse(["something"]));
