@@ -133,3 +133,11 @@ console.log(trout.safeParse("trout").success);
 const currencyCode = z.currencyCode();
 
 console.log("🎮 ~ zod.ts:133 ~ currencyCode:", currencyCode.parse("GBP"));
+
+//! z enum
+
+const cars = { porsche: 2, bmw: 6, benz: 1 } as const;
+
+const carsEnum = z.enum(cars);
+
+console.log("🍰 ~ zod.ts:141 ~ carsEnum:", carsEnum.parse(cars.bmw));
