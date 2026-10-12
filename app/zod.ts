@@ -194,3 +194,13 @@ console.log(
   "🏕️ ~ zod.ts:187 ~ looseItems:",
   looseItems.parse({ cargo: "items", something: "sdasd" }),
 );
+
+const catchAllLists = z
+  .object({
+    name: z.string(),
+    age: z.number().optional(),
+  })
+  .catchall(z.string());
+
+// catchAllLists.parse({ name: "ashley", age: "dswsd" }); // will be passed
+// catchAllLists.parse({ name: "ashley", age: 32424 }); // won't be passed
