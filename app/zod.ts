@@ -158,3 +158,16 @@ const strbools = z.stringbool({
 });
 
 console.log("🛶 ~ zod.ts:154 ~ stringbool:", strbools.parse("user"));
+
+//! z.optional()
+
+const lists = z.object({
+  name: z.string(),
+  lastName: z.string(),
+  address: z.string().optional(),
+});
+
+console.log(
+  "🍕 ~ zod.ts:164 ~ lists:",
+  lists.parse({ name: "ashley", lastName: "rose" }),
+);
