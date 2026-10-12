@@ -165,9 +165,12 @@ const lists = z.object({
   name: z.string(),
   lastName: z.string(),
   address: z.string().optional(),
+  // tax: z.number().nullish(),
+  tax: z.number().nullable(),
 });
 
 console.log(
   "🍕 ~ zod.ts:164 ~ lists:",
-  lists.parse({ name: "ashley", lastName: "rose" }),
+  lists.parse({ name: "ashley", lastName: "rose", tax: 10 }),
+  lists.parse({ name: "ashley", lastName: "rose", tax: null }),
 );
