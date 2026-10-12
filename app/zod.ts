@@ -241,3 +241,22 @@ console.log("unwrap schema: ", unwrapSchema.parse("test-schema"));
 const noneEmpty = z.array(z.string()).nonempty();
 
 console.log("🛩️ ~ zod.ts:241 ~ noneEmpty:", noneEmpty.parse(["something"]));
+
+type MyResult =
+  | { status: "success"; data: string }
+  | {
+      status: " failed";
+      error: string;
+    };
+
+const resultFunction = (result: MyResult) => {
+  if (result.status === "success") {
+    console.log("data result :", result.status);
+    return result.data;
+  } else if (result.status === " failed") {
+    console.log(result.error);
+    return result.error;
+  }
+};
+
+resultFunction({ status: "success", data: "has been fetched" });
