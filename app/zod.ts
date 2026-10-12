@@ -281,3 +281,17 @@ const IdCache = idCache.parse({
   phone: 223232,
 });
 console.log("🙃 ~ zod.ts:279 ~ idRes:", IdCache);
+
+//? z.looseRecord()
+
+const looseRecord = z.looseRecord(
+  z.enum(["name", "age"]),
+  z.union([z.string(), z.number()]),
+);
+
+const looseRecordResult = looseRecord.parse({
+  name: "ashley",
+  age: 21,
+  city: "chicago",
+});
+console.log("🚃 ~ zod.ts:289 ~ looseRecordResult:", looseRecordResult);
