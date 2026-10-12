@@ -204,3 +204,18 @@ const catchAllLists = z
 
 // catchAllLists.parse({ name: "ashley", age: "dswsd" }); // will be passed
 // catchAllLists.parse({ name: "ashley", age: 32424 }); // won't be passed
+
+const dataOmission = z.object({
+  user: z.string(),
+  id: z.number(),
+  userId: z.number(),
+});
+
+const omission = dataOmission.omit({
+  userId: true,
+});
+
+console.log(
+  "🌟 ~ zod.ts:214 ~ omission:",
+  omission.parse({ user: "s", id: 1212 }),
+);
