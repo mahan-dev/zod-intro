@@ -144,8 +144,17 @@ console.log("🍰 ~ zod.ts:141 ~ carsEnum:", carsEnum.parse(cars.bmw));
 
 // ! z.strbools
 
-const strBools = z.stringbool();
+// const strBools = z.stringbool();
 
+// console.log("🎺 ~ zod.ts:147 ~ strBools:", strBools.parse("1"));
+// console.log("🎺 ~ zod.ts:147 ~ strBools:", strBools.parse("disabled"));
+// console.log("🎺 ~ zod.ts:147 ~ strBools:", strBools.safeParse("disabled2"));
+//
 
-console.log("🎺 ~ zod.ts:147 ~ strBools:",strBools.parse("1"));
-console.log("🎺 ~ zod.ts:147 ~ strBools:",strBools.parse("disabled"));
+const strbools = z.stringbool({
+  truthy: ["yes", "admin", "allowed"],
+  falsy: ["no", "user", "not-allowed"],
+  // case:
+});
+
+console.log("🛶 ~ zod.ts:154 ~ stringbool:", strbools.parse("user"));
