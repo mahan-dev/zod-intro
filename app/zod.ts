@@ -269,3 +269,15 @@ const scenario_2 = z.union([z.boolean(), z.number()]);
 const scenarioResult = z.intersection(scenario_1, scenario_2);
 
 console.log("🚇 ~ zod.ts:269 ~ scenarioResult:", scenarioResult.parse(1));
+
+//! z.record
+
+const idCache = z.record(z.string(), z.union([z.number(), z.string()]));
+
+type IdCache = z.infer<typeof idCache>;
+
+const IdCache = idCache.parse({
+  address: "st 342 pt2",
+  phone: 223232,
+});
+console.log("🙃 ~ zod.ts:279 ~ idRes:", IdCache);
