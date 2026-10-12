@@ -180,5 +180,17 @@ const strictItems = z.strictObject({
 });
 console.log(
   "🍺 ~ zod.ts:178 ~ strictItems:",
-  strictItems.parse({ cargo: "items", something: "sdasd" }),
+  strictItems.parse({
+    cargo: "items",
+    // something: "sdasd"
+  }),
+);
+
+const looseItems = z.looseObject({
+  cargo: z.string(),
+});
+
+console.log(
+  "🏕️ ~ zod.ts:187 ~ looseItems:",
+  looseItems.parse({ cargo: "items", something: "sdasd" }),
 );
