@@ -219,3 +219,13 @@ console.log(
   "🌟 ~ zod.ts:214 ~ omission:",
   omission.parse({ user: "s", id: 1212 }),
 );
+
+const items = z.object({
+  product: z.string(),
+  serial: z.string(),
+  expireDate: z.date(),
+});
+
+const keyOfItems = items.keyof();
+
+console.log("🚊 ~ zod.ts:229 ~ keyOfItems:", keyOfItems.parse("product"));
