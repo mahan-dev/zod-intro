@@ -260,3 +260,12 @@ const resultFunction = (result: MyResult) => {
 };
 
 resultFunction({ status: "success", data: "has been fetched" });
+
+// ? zod intersection
+
+const scenario_1 = z.union([z.string(), z.number()]);
+const scenario_2 = z.union([z.boolean(), z.number()]);
+
+const scenarioResult = z.intersection(scenario_1, scenario_2);
+
+console.log("🚇 ~ zod.ts:269 ~ scenarioResult:", scenarioResult.parse(1));
