@@ -229,3 +229,10 @@ const items = z.object({
 const keyOfItems = items.keyof();
 
 console.log("🚊 ~ zod.ts:229 ~ keyOfItems:", keyOfItems.parse("product"));
+
+const stringArray = z.array(z.string().nullish());
+const unwrapSchema = stringArray.unwrap();
+
+console.log("🌈 ~ zod.ts:235 ~ stringArray:", stringArray.parse([null]));
+
+console.log("unwrap schema: ", unwrapSchema.parse("test-schema"));
