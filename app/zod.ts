@@ -352,5 +352,19 @@ class TestInstanceOf {
 
 const classInstanceOf = z.instanceof(TestInstanceOf);
 
-console.log('🚊 ~ zod.ts:345 ~ TestInstanceOf:',  classInstanceOf.parse(new TestInstanceOf("name")));
- 
+console.log(
+  "🚊 ~ zod.ts:345 ~ TestInstanceOf:",
+  classInstanceOf.parse(new TestInstanceOf("name")),
+);
+
+// ? z.property
+
+const blobSchema = z
+
+  .instanceof(URL)
+  .check(z.property("protocol", z.literal("https:", "only https allowed")));
+
+console.log(
+  "🚤 ~ zod.ts:362 ~ blobSchema:",
+  blobSchema.parse(new URL("https://google.com")),
+);
