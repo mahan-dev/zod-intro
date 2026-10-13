@@ -295,3 +295,26 @@ const looseRecordResult = looseRecord.parse({
   city: "chicago",
 });
 console.log("🚃 ~ zod.ts:289 ~ looseRecordResult:", looseRecordResult);
+
+const form = z.object({
+  name: z.string(),
+  lastName: z.string(),
+  age: z.number(),
+});
+
+const formResult = form.parse({ name: "ben", lastName: "selin", age: 33 });
+console.log("🌮 ~ zod.ts:305 ~ result:", formResult); //🌮 ~ zod.ts:305 ~ result: { name: 'ben', lastName: 'selin', age: 33 }
+// * z.map
+
+const stringNumberMap = z.map(z.string(), z.number());
+
+type StringMap = z.infer<typeof stringNumberMap>;
+
+const myMaps: StringMap = new Map();
+myMaps.set("1", 1);
+myMaps.set("2", 2);
+
+console.log('🛰️ ~ zod.ts:309 ~ stringNumberMap:', stringNumberMap.parse(myMaps));
+
+
+
