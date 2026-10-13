@@ -314,7 +314,19 @@ const myMaps: StringMap = new Map();
 myMaps.set("1", 1);
 myMaps.set("2", 2);
 
-console.log('🛰️ ~ zod.ts:309 ~ stringNumberMap:', stringNumberMap.parse(myMaps));
+console.log(
+  "🛰️ ~ zod.ts:309 ~ stringNumberMap:",
+  stringNumberMap.parse(myMaps),
+);
+//! z.set
 
+const numberSet = z.set(z.number());
 
+type NumberSet = z.infer<typeof numberSet>;
 
+const mySet: NumberSet = new Set();
+
+mySet.add(1);
+mySet.add(2);
+
+console.log("🎺 ~ zod.ts:323 ~ const:", numberSet.parse(mySet));
