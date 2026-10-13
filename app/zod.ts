@@ -339,3 +339,18 @@ const fileSchema = z
   .mime(["image/png", "image/jpeg"]);
 
 console.log("🚏 ~ zod.ts:334 ~ fileSchema:", fileSchema);
+
+//! z.instanceof
+
+class TestInstanceOf {
+  name: string;
+
+  constructor(name: string) {
+    this.name = name;
+  }
+}
+
+const classInstanceOf = z.instanceof(TestInstanceOf);
+
+console.log('🚊 ~ zod.ts:345 ~ TestInstanceOf:',  classInstanceOf.parse(new TestInstanceOf("name")));
+ 
