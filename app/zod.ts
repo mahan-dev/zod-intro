@@ -369,8 +369,29 @@ console.log(
   blobSchema.parse(new URL("https://google.com")),
 );
 
-// z.refine
+//? z.refine
 const refineString = z.string().refine((val) => val.length <= 10, {
   error: "length is too long, should be less than 10",
 });
 console.log("🎧 ~ zod.ts:373 ~ refineString:", refineString.parse("hi there"));
+
+//! z.superRefine
+
+const userNameValidation = z.string().superRefine((userName, ctx) => {
+  if (userName.length <= 3)
+    ctx.addIssue({
+      code: "custom",
+      message: "must contains at least 4",
+    });
+
+  if (userName.length >= 40)
+    ctx.addIssue({
+      code: "custom",
+      message: "is too large !",
+    });
+});
+
+console.log(
+  "🌄 ~ zod.ts:380 ~ userNameValidation:",
+  userNameValidation.parse("test userName"),
+);
