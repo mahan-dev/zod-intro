@@ -330,3 +330,12 @@ mySet.add(1);
 mySet.add(2);
 
 console.log("🎺 ~ zod.ts:323 ~ const:", numberSet.parse(mySet));
+// ? z.file
+const fileSchema = z
+  .file()
+  .min(10_000)
+  .max(10_000_000)
+  .mime("image/png")
+  .mime(["image/png", "image/jpeg"]);
+
+console.log("🚏 ~ zod.ts:334 ~ fileSchema:", fileSchema);
