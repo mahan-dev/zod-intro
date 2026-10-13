@@ -368,3 +368,9 @@ console.log(
   "🚤 ~ zod.ts:362 ~ blobSchema:",
   blobSchema.parse(new URL("https://google.com")),
 );
+
+// z.refine
+const refineString = z.string().refine((val) => val.length <= 10, {
+  error: "length is too long, should be less than 10",
+});
+console.log("🎧 ~ zod.ts:373 ~ refineString:", refineString.parse("hi there"));
