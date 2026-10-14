@@ -380,7 +380,10 @@ console.log("🎧 ~ zod.ts:373 ~ refineString:", refineString.parse("hi there"))
 const userNameValidation = z.string().superRefine((userName, ctx) => {
   if (userName.length <= 3)
     ctx.addIssue({
-      code: "custom",
+      code: "too_small",
+      minimum: 3,
+      origin: "string",
+
       message: "must contains at least 4",
     });
 
